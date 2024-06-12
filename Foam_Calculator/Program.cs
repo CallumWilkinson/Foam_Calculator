@@ -1,3 +1,5 @@
+using Foam_Calculator.Services;
+
 namespace Foam_Calculator
 {
     public class Program
@@ -8,6 +10,10 @@ namespace Foam_Calculator
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+
+            //register csv reader service
+            builder.Services.AddScoped<CSVReaderService>();
 
             var app = builder.Build();
 
