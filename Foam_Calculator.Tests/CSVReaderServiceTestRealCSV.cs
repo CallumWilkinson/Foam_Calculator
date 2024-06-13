@@ -18,7 +18,7 @@ namespace FoamCalculator.Tests
         {
             //arrange
             var csvReaderService = new CSVReaderService();
-            string actualCsvFile = "C:\\Users\\callu\\Documents\\GitHub\\FoamCalculator\\FoamPrice.csv";
+            string actualCsvFile = "C:\\Users\\callu\\Documents\\GitHub\\Foam_Calculator\\Foam_Calculator\\FoamPrice.csv";
 
             //act
             var result = csvReaderService.ReadCsvFile(actualCsvFile).ToList();
