@@ -2,7 +2,33 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Foam Calculator</h1>
-    
+<div>
+    @* When viewing in google chrome, change dimensions to 390 x 844 *@
+    <form>
+        
+
+        <div class="mb-3">
+            <label for="Colour" class="form-label">Colour</label>
+            <select class="form-select" id="selectDropdown">
+                <option selected>Select</option>
+                <option value="White">White</option>
+                <option value="Green">Green</option>
+                <option value="Yellow">Yellow</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="inputText" class="form-label">Input Label</label>
+            <input type="text" class="form-control" id="inputText" placeholder="Enter text">
+        </div>
+
+        <div class="mb-3">
+            <label for="outputField" class="form-label">Output</label>
+            <input type="text" readonly class="form-control-plaintext" id="outputField" value="Output appears here...">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+    </form>
+
 </div>
