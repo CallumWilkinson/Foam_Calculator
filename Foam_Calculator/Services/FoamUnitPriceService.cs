@@ -6,15 +6,22 @@ namespace Foam_Calculator.Services
     {
         private Dictionary<ColourThicknessKey, double> _unitPriceTable;
 
-        public FoamUnitPriceService()
+        private CSVReaderService _csvReaderService;
+        
+        private IEnumerable<string[]> _csvContents;
+
+        public FoamUnitPriceService(string csvFilePath)
         {
-            _unitPriceTable = new Dictionary<ColourThicknessKey, double>();
+            _csvReaderService = new CSVReaderService(csvFilePath);
+            _csvContents = _csvReaderService.ReadCsvFile();
         }
 
-        public double GetUnitPriceByColourAndThickness(string colour, int thickness) 
-        {
+        
 
-        }
+        //public double GetUnitPriceByColourAndThickness(string colour, int thickness) 
+        //{
+            
+        //}
 
     }
 }
