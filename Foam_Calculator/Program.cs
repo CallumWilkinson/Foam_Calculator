@@ -14,8 +14,10 @@ namespace Foam_Calculator
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 
+
             //register csv reader service
-            builder.Services.AddScoped<CSVReaderService>();
+            builder.Services.AddScoped<CSVReaderService>(provider => new CSVReaderService("C:\\Users\\callu\\Documents\\GitHub\\FoamCalculator\\FoamPrice.csv"));
+
 
             var app = builder.Build();
 
