@@ -22,7 +22,6 @@ namespace FoamCalculator.Tests
             //act
             var result = csvReaderService.ReadCsvFile().ToList();
 
-            //Id,Color,Thickness(mm),SKU,RRP($)
 
             //assert
             result.Should().HaveCount(24);

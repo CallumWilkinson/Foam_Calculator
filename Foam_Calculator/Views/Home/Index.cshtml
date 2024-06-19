@@ -1,12 +1,10 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+@model namespace.Foam_Calculator.Models;
 <div>
     @* When viewing in google chrome, change dimensions to 390 x 844 *@
-    <form>
-        
-
+    <form method="post">
         <div class="mb-3">
             <label for="Colour" class="form-label">Colour</label>
             <select class="form-select" id="selectDropdown">
@@ -34,18 +32,18 @@
         </div>
 
         <div class="mb-3">
-            <label for="inputLength" class="form-label">Length (cm)</label>
-            <input type="text" class="form-control" id="inputLength" placeholder="Enter Length">
+            <label asp-for="inputLength" class="form-label">Length (cm)</label>
+            <input asp-for="inputLength" type="text" class="form-control" placeholder="Enter Length">
         </div>
 
         <div class="mb-3">
-            <label for="inputWidth" class="form-label">Width (cm)</label>
-            <input type="text" class="form-control" id="inputWidth" placeholder="Enter Width">
+            <label asp-for="inputWidth" class="form-label">Width (cm)</label>
+            <input asp-for="inputWidth" type="text" class="form-control" placeholder="Enter Width">
         </div>
 
         <div class="mb-3">
-            <label for="inputAmountOfCushions" class="form-label">Amount of Cushions</label>
-            <input type="text" class="form-control" id="inputAmountOfCushions" placeholder="Enter Amount of Cushions">
+            <label asp-for="Number_of_Cushions" class="form-label">Number of Cushions</label>
+            <input type="text" class="form-control" asp-for="Number_of_Cushions" placeholder="Enter Amount of Cushions">
         </div>
 
         <div class="mb-3">
