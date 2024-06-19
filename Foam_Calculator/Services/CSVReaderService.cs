@@ -4,6 +4,7 @@ using System.IO;
 namespace Foam_Calculator.Services
 {
     public class CSVReaderService
+
     {
         private string _csvFilePath;
 
@@ -12,7 +13,9 @@ namespace Foam_Calculator.Services
             _csvFilePath = filePath;
         }
 
-        public IEnumerable<string[]> ReadCsvFile()
+
+        //turns the csv into a list of string arrays
+        public List<string[]> ReadCsvFile()
         {
             List<string[]> records = new List<string[]>();
 

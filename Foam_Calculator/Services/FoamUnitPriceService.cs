@@ -1,12 +1,13 @@
-﻿using Foam_Calculator.UtilityClasses;
-
-namespace Foam_Calculator.Services
+﻿namespace Foam_Calculator.Services
 {
     public class FoamUnitPriceService
     {
+
+        //create dictionary
         private readonly Dictionary<int, double> _foamPriceDictionary = new Dictionary<int, double>();
-        
-        private IEnumerable<string[]> _csvContents;
+
+        //list of string arrays containing the data
+        private List<string[]> _csvContents;
 
         public FoamUnitPriceService(string csvFilePath)
         {
@@ -18,16 +19,13 @@ namespace Foam_Calculator.Services
         
         private void PopulateFoamPriceDictionary()
         {
-            foreach (string[] row in _csvContents) 
+            for (int i = 0; i < _csvContents.Count; i++)
             {
-                if (row.Length >=5) //each row should have a key, colour, thickness, sku and unitprice
-                {
-                    GetPrice(row);
-                }
+                _foamPriceDictionary.Add(i, _csvContents[i]);
             }
         }
 
-        private void GetPrice(string[] row)
+        private void TypeCastRecords(string[] row)
         {
             int key = int.Parse(row[0]);
             string colour = row[1];

@@ -2,6 +2,7 @@
 {
     public class FoamCalculatorModel
     {
+        public int Id {  get; set; }
         public string Colour { get; set; }
         public string Thickness { get; set; }
         public int Length { get; set; }
