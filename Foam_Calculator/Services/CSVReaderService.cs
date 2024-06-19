@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.CodeAnalysis.CSharp;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Foam_Calculator.Services
@@ -28,15 +29,13 @@ namespace Foam_Calculator.Services
                     var values = row.Split(',');
                     data.Add(values);
                 }
-
-                //foreach (var row in data)
-                //{
-                //    this.TypeCastAllValuesInRow(row);
-                //}
             }
 
             return data;
         }
+
+
+       
 
 
      

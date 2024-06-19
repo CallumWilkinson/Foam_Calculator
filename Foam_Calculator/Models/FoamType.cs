@@ -14,7 +14,7 @@ namespace Foam_Calculator.Models
 
         public double unitPrice { get; set; }
 
-
+        //constructor takes in a string[] row, type casts all the values and sets then to the fields of the object
         public FoamType(string[] row)
         {
             Id = int.Parse(row[0]);
@@ -25,10 +25,7 @@ namespace Foam_Calculator.Models
         }
 
 
-
-        //foreach row in csv, run SetValuesOfObject(row) when you create and instance of foamtype class you 
-        //run this function and pass through a row to populate the object with line from csv
-        //i think i just want a constructor that takes in a string[] row, then run a foreach loop, foreach row create a new object
+        // run a foreach loop over the csv, foreach row create a new foamtype object
 
     }
 
