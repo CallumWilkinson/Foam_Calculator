@@ -11,25 +11,34 @@ namespace Foam_Calculator.Services
         public CSVReaderService(string filePath)
         {
             _csvFilePath = filePath;
+            
         }
 
 
         //turns the csv into a list of string arrays
         public List<string[]> ReadCsvFile()
         {
-            List<string[]> records = new List<string[]>();
+            List<string[]> data = new List<string[]>();
 
             using (StreamReader reader = new StreamReader(_csvFilePath))
             {
                 while (!reader.EndOfStream)
                 {
-                    var line = reader.ReadLine();
-                    var values = line.Split(',');
-                    records.Add(values);
+                    var row = reader.ReadLine();
+                    var values = row.Split(',');
+                    data.Add(values);
                 }
+
+                //foreach (var row in data)
+                //{
+                //    this.TypeCastAllValuesInRow(row);
+                //}
             }
 
-            return records;
+            return data;
         }
+
+
+     
     }
 }
