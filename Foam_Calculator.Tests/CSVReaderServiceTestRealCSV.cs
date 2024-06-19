@@ -25,8 +25,8 @@ namespace FoamCalculator.Tests
             //Id,Color,Thickness(mm),SKU,RRP($)
 
             //assert
-            result.Should().HaveCount(25);
-            result[24].Should().Equal("24","Yellow", "150", "25043", "3.39");
+            result.Should().HaveCount(24);
+            result[23].Should().Equal("24","Yellow", "150", "25043", "3.39");
         }
     }
 }

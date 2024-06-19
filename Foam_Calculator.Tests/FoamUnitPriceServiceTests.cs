@@ -14,7 +14,7 @@ namespace Foam_Calculator.Tests
     {
 
         [Test]
-        public void TestingLookup()
+        public void TestingLookupFunctions()
         {
 
             //arrange
@@ -23,9 +23,11 @@ namespace Foam_Calculator.Tests
 
             //act
             double green50mmUnitPrice = foamPriceService.GetUnitPriceByColourAndThickness("Green", 50);
+            int green50mmSKU = foamPriceService.GetSkuByColourAndThickness("Green", 50);
 
             //assert
             green50mmUnitPrice.Should().Be(0.9);
+            green50mmSKU.Should().Be(25085);
         }
 
     }
