@@ -17,17 +17,17 @@ namespace FoamCalculator.Tests
         public void TestingWithActualCSVFile()
         {
             //arrange
-            var csvReaderService = new CSVReaderService();
-            string actualCsvFile = "C:\\Users\\callu\\Documents\\GitHub\\Foam_Calculator\\Foam_Calculator\\FoamPrice.csv";
+            var csvReaderService = new CSVReaderService("C:\\Users\\callu\\Documents\\GitHub\\Foam_Calculator\\Foam_Calculator\\FoamPrice.csv");
 
             //act
-            var result = csvReaderService.ReadCsvFile(actualCsvFile).ToList();
+            var result = csvReaderService.ReadCsvFile().ToList();
 
+            //Id,Color,Thickness(mm),SKU,RRP($)
 
             //assert
             result.Should().HaveCount(25);
-            result[0].Should().Equal("Color", "Size", "SKU", "RRP");
-            result[24].Should().Equal("Yellow", "150mm", "25043", "$3.39");
+            result[0].Should().Equal("Id","Color", "Thickness(mm)", "SKU", "RRP($)");
+            result[24].Should().Equal("24","Yellow", "150", "25043", "3.39");
         }
     }
 }

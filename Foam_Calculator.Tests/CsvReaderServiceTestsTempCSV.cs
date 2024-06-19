@@ -21,7 +21,7 @@ namespace FoamCalculator.Tests
         [SetUp]
         public void Setup()
         {
-            _csvReaderService = new CSVReaderService();
+            _csvReaderService = new CSVReaderService(_testFilePath);
 
 
             //make a csv file, save it to the testfilepath
@@ -41,7 +41,7 @@ namespace FoamCalculator.Tests
             //arrange
 
             //act
-            var result = _csvReaderService.ReadCsvFile(_testFilePath).ToList();
+            var result = _csvReaderService.ReadCsvFile().ToList();
             result[0].Should().Equal(new[] { "Color", "Size", "SKU", "RRP" });
 
 

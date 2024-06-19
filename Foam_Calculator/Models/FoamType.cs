@@ -14,6 +14,8 @@ namespace Foam_Calculator.Models
 
         public double unitPrice { get; set; }
 
+
+
         //constructor takes in a string[] row, type casts all the values and sets then to the fields of the object
         public FoamType(string[] row)
         {
@@ -24,8 +26,6 @@ namespace Foam_Calculator.Models
             unitPrice = double.Parse(row[4]);
         }
 
-
-        // run a foreach loop over the csv, foreach row create a new foamtype object
 
     }
 
