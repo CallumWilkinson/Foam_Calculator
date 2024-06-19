@@ -1,5 +1,6 @@
 ﻿using Foam_Calculator.Models;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace Foam_Calculator.Services
 {
@@ -38,6 +39,17 @@ namespace Foam_Calculator.Services
 
             return listOfFoamTypeObjects;
 
+        }
+
+        private bool IsGreenAndThick(FoamType f) => f.Colour == "green" && f.Thickness == 1;
+
+
+        public List<FoamType> CreateFoamTypeObjects2()
+        {
+            return _csvContents
+                .Select(row => new FoamType(row))
+                .Where(IsGreenAndThick)
+                .ToList();
         }
 
 
