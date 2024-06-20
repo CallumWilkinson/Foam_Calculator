@@ -35,15 +35,6 @@ namespace Foam_Calculator.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        //[HttpPost]
-
-        //public IActionResult RunCalculations(QuantityCalculationModel quantityCalculationModel, FoamUnitPriceService foamUnitPriceService)
-        //{
-        //    CalculateQuantity(quantityCalculationModel);
-        //    CalculateTotalPrice(foamUnitPriceService);
-        //    return View("Index");
-
-        //}
 
         [HttpPost]
         public IActionResult CalculateQuantity(QuantityCalculationModel quantityCalculationModel)
@@ -56,8 +47,7 @@ namespace Foam_Calculator.Controllers
             return View("Index");
         }
 
-        [HttpPost]
-        public IActionResult CalculateTotalPrice(FoamUnitPriceService foamUnitPriceService)
+        private void CalculateTotalPrice(FoamUnitPriceService foamUnitPriceService)
         {
             double unitPrice = foamUnitPriceService.GetUnitPriceByColourAndThickness(_quantityCalculationModel.InputColour, _quantityCalculationModel.InputThickness);
             double totalPrice = _quantity * unitPrice;
@@ -65,8 +55,6 @@ namespace Foam_Calculator.Controllers
 
             int sku = foamUnitPriceService.GetSkuByColourAndThickness(_quantityCalculationModel.InputColour, _quantityCalculationModel.InputThickness);
             ViewBag.sku = sku;
-
-            return View("Index");
         }
     }
 }

@@ -52,22 +52,25 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label fw-bold">Foam Quantity</label>
-            <input type="text" readonly class="form-control-plaintext" value=@ViewBag.quantity>
+            <label class="form-label fw-bold">Total Foam Price</label>
+            <input type="text" readonly class="form-control-plaintext" value=$@ViewBag.totalPrice>
         </div>
 
         <div class="mb-3">
-            <label class="form-label fw-bold">Foam Price</label>
-            <input type="text" readonly class="form-control-plaintext" value=@ViewBag.totalPrice>
-        </div>
+            <label class="form-label fw-bold">Total Quantity</label>
+            <input type="text" readonly class="form-control-plaintext" value=@ViewBag.quantity>
+        </div>       
 
         <div class="mb-3">
             <label class="form-label fw-bold">SKU</label>
             <input type="text" readonly class="form-control-plaintext" value=@ViewBag.sku>
         </div>
-
-        <button type="submit" class="btn btn-primary" style="width: 49%">Save</button>
-        <button type="button" class="btn btn-danger" style="width: 49%">Delete</button>
+        
+        <a href="/">
+        <div type="button" class="btn btn-danger" style="width: 100%">
+            Reset
+            </div>
+            </a>
     </form>
 
 </div>
