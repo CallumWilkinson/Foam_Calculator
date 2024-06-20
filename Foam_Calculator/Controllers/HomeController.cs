@@ -63,6 +63,9 @@ namespace Foam_Calculator.Controllers
             double totalPrice = _quantity * unitPrice;
             ViewBag.totalPrice = totalPrice;
 
+            int sku = foamUnitPriceService.GetSkuByColourAndThickness(_quantityCalculationModel.InputColour, _quantityCalculationModel.InputThickness);
+            ViewBag.sku = sku;
+
             return View("Index");
         }
     }
