@@ -8,6 +8,8 @@ namespace Foam_Calculator.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        QuantityCalculationModel _quantityCalculationModel = new QuantityCalculationModel();
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -27,6 +29,13 @@ namespace Foam_Calculator.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        public IActionResult CalculateQuantity()
+        {
+            ViewBag.quantity = _quantityCalculationModel.InputLength * _quantityCalculationModel.InputWidth * _quantityCalculationModel.InputNumber_of_Cushions;
+            return View("Index");
         }
     }
 }

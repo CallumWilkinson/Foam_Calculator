@@ -2,9 +2,10 @@
     ViewData["Title"] = "Home Page";
 }
 @model Foam_Calculator.Models.QuantityCalculationModel
+
 <div>
     @* When viewing in google chrome, change dimensions to 390 x 844 *@
-    <form asp-controller="QuantityCalculationController" asp-action="CalculateQuantity" method="post">
+    <form asp-action="CalculateQuantity" asp-controller="Home" method="post">
         <div class="mb-3">
             <label for="Colour" class="form-label">Colour</label>
             <select class="form-select" id="selectDropdown">
@@ -51,8 +52,8 @@
         </div>
 
         <div class="mb-3">
-            <label for="outputFoamQuantity" class="form-label fw-bold">Foam Quantity</label>
-            <input type="text" readonly class="form-control-plaintext" id="outputFoamQuantity" value="@ViewBag.quantity">
+            <label class="form-label fw-bold">Foam Quantity</label>
+            <input type="text" readonly class="form-control-plaintext" value=@ViewBag.quantity>
         </div>
 
         <div class="mb-3">
