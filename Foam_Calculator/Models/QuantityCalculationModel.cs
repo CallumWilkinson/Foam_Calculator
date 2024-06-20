@@ -2,6 +2,10 @@
 {
     public class QuantityCalculationModel
     {
+        public string InputColour { get; set; }
+
+        public int InputThickness { get; set; }
+
         public int InputLength { get; set; }
 
         public int InputWidth { get; set; }

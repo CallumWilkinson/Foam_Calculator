@@ -1,4 +1,5 @@
 using Foam_Calculator.Models;
+using Foam_Calculator.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,6 +8,10 @@ namespace Foam_Calculator.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+
+        private int _quantity;
+
+        private QuantityCalculationModel _quantityCalculationModel;
   
 
         public HomeController(ILogger<HomeController> logger)
@@ -33,7 +38,19 @@ namespace Foam_Calculator.Controllers
         [HttpPost]
         public IActionResult CalculateQuantity(QuantityCalculationModel quantityCalculationModel)
         {
-            ViewBag.quantity = quantityCalculationModel.InputLength * quantityCalculationModel.InputWidth * quantityCalculationModel.InputNumber_of_Cushions;
+            ViewBag.quantity = (quantityCalculationModel.InputLength * quantityCalculationModel.InputWidth)/100 * quantityCalculationModel.InputNumber_of_Cushions;
+            _quantity = ViewBag.quantity;
+            _quantityCalculationModel = quantityCalculationModel;
+            return View("Index");
+        }
+
+        [HttpPost]
+        public IActionResult CalculateTotalPrice(FoamUnitPriceService foamUnitPriceService)
+        {
+            double unitPrice = foamUnitPriceService.GetUnitPriceByColourAndThickness(_quantityCalculationModel.InputColour, _quantityCalculationModel.InputThickness);
+            double totalPrice = _quantity * unitPrice;
+            ViewBag.totalPrice = totalPrice;
+
             return View("Index");
         }
     }
