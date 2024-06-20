@@ -35,12 +35,24 @@ namespace Foam_Calculator.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        //[HttpPost]
+
+        //public IActionResult RunCalculations(QuantityCalculationModel quantityCalculationModel, FoamUnitPriceService foamUnitPriceService)
+        //{
+        //    CalculateQuantity(quantityCalculationModel);
+        //    CalculateTotalPrice(foamUnitPriceService);
+        //    return View("Index");
+
+        //}
+
         [HttpPost]
         public IActionResult CalculateQuantity(QuantityCalculationModel quantityCalculationModel)
         {
             ViewBag.quantity = (quantityCalculationModel.InputLength * quantityCalculationModel.InputWidth)/100 * quantityCalculationModel.InputNumber_of_Cushions;
             _quantity = ViewBag.quantity;
             _quantityCalculationModel = quantityCalculationModel;
+            FoamUnitPriceService foamUnitPriceService = new FoamUnitPriceService("C:\\Users\\callu\\Documents\\GitHub\\Foam_Calculator\\Foam_Calculator\\FoamPrice.csv");
+            CalculateTotalPrice(foamUnitPriceService);
             return View("Index");
         }
 
