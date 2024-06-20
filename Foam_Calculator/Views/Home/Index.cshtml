@@ -1,10 +1,10 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model namespace.Foam_Calculator.Models;
+@model Foam_Calculator.Models.QuantityCalculationModel
 <div>
     @* When viewing in google chrome, change dimensions to 390 x 844 *@
-    <form method="post">
+    <form asp-controller="QuantityCalculationController" asp-action="CalculateQuantity" method="post">
         <div class="mb-3">
             <label for="Colour" class="form-label">Colour</label>
             <select class="form-select" id="selectDropdown">
@@ -32,18 +32,18 @@
         </div>
 
         <div class="mb-3">
-            <label asp-for="inputLength" class="form-label">Length (cm)</label>
-            <input asp-for="inputLength" type="text" class="form-control" placeholder="Enter Length">
+            <label asp-for="InputLength" class="form-label">Length (cm)</label>
+            <input asp-for="InputLength" type="text" class="form-control" placeholder="Enter Length">
         </div>
 
         <div class="mb-3">
-            <label asp-for="inputWidth" class="form-label">Width (cm)</label>
-            <input asp-for="inputWidth" type="text" class="form-control" placeholder="Enter Width">
+            <label asp-for="InputWidth" class="form-label">Width (cm)</label>
+            <input asp-for="InputWidth" type="text" class="form-control" placeholder="Enter Width">
         </div>
 
         <div class="mb-3">
-            <label asp-for="Number_of_Cushions" class="form-label">Number of Cushions</label>
-            <input type="text" class="form-control" asp-for="Number_of_Cushions" placeholder="Enter Amount of Cushions">
+            <label asp-for="InputNumber_of_Cushions" class="form-label">Number of Cushions</label>
+            <input asp-for="InputNumber_of_Cushions" type="text" class="form-control" placeholder="Enter Amount of Cushions">
         </div>
 
         <div class="mb-3">
@@ -52,7 +52,7 @@
 
         <div class="mb-3">
             <label for="outputFoamQuantity" class="form-label fw-bold">Foam Quantity</label>
-            <input type="text" readonly class="form-control-plaintext" id="outputFoamQuantity" value="x">
+            <input type="text" readonly class="form-control-plaintext" id="outputFoamQuantity" value="@ViewBag.quantity">
         </div>
 
         <div class="mb-3">

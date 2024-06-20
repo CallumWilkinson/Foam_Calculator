@@ -2,12 +2,11 @@
 {
     public class QuantityCalculationModel
     {
-        public int Length { get; set; }
+        public int InputLength { get; set; }
 
-        public int Width { get; set; }
+        public int InputWidth { get; set; }
 
-        public int Number_of_Cushions { get; set; }
-
-        public int Result {  get; set; }
+        public int InputNumber_of_Cushions { get; set; }
+      
     }
 }
