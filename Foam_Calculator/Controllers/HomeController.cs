@@ -7,8 +7,7 @@ namespace Foam_Calculator.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        QuantityCalculationModel _quantityCalculationModel = new QuantityCalculationModel();
+  
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -32,9 +31,9 @@ namespace Foam_Calculator.Controllers
         }
 
         [HttpPost]
-        public IActionResult CalculateQuantity()
+        public IActionResult CalculateQuantity(QuantityCalculationModel quantityCalculationModel)
         {
-            ViewBag.quantity = _quantityCalculationModel.InputLength * _quantityCalculationModel.InputWidth * _quantityCalculationModel.InputNumber_of_Cushions;
+            ViewBag.quantity = quantityCalculationModel.InputLength * quantityCalculationModel.InputWidth * quantityCalculationModel.InputNumber_of_Cushions;
             return View("Index");
         }
     }
