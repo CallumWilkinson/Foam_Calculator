@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model Foam_Calculator.Models.QuantityCalculationModel, Foam_Calculator.Models.CalculatorViewModel
+@model Foam_Calculator.Models.CalculationModel
 
 <div>
     @* When viewing in google chrome, change dimensions to 390 x 844 *@
@@ -51,19 +51,44 @@
             <button type="submit" class="btn btn-primary" style="width: 100%; background-color: green; color: white; border: solid green;">Calculate</button>
         </div>
 
+        @{
+            decimal? outputPrice = 0;
+            decimal? outputQuantity = 0;
+            int outputSku = 0;
+
+
+            //model is not created untill the calculate button is pressed
+            if (Model != null)
+            {
+                if (Model.OutputTotalPrice != null)
+                {
+                    outputPrice = Model.OutputTotalPrice;
+                    outputQuantity = Model.OutputQuantity;
+                    outputSku = Model.OutputSKU;
+                }
+                else
+                {
+                    outputPrice = 0;
+                    outputQuantity = 0;
+                    outputSku = 0;
+                }
+            }
+            
+        }
+
         <div class="mb-3">
             <label class="form-label fw-bold">Total Foam Price</label>
-            <input type="text" readonly class="form-control-plaintext" value="@ViewBag.totalPrice">
+            <input type="text" readonly class="form-control-plaintext" value="@outputPrice">
         </div>
 
         <div class="mb-3">
             <label class="form-label fw-bold">Total Quantity</label>
-            <input type="text" readonly class="form-control-plaintext" value="@ViewBag.quantity">
+            <input type="text" readonly class="form-control-plaintext" value="@outputQuantity">
         </div>       
 
         <div class="mb-3">
             <label class="form-label fw-bold">SKU</label>
-            <input type="text" readonly class="form-control-plaintext" value=@ViewBag.sku>
+            <input type="text" readonly class="form-control-plaintext" value="@outputSku">
         </div>
         
         <a href="/">

@@ -9,7 +9,7 @@ namespace Foam_Calculator.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private QuantityCalculationModel _quantityCalculationModel;
+        private CalculationModel _CalculationModel;
 
         private decimal _quantity;
 
@@ -30,11 +30,6 @@ namespace Foam_Calculator.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
@@ -43,34 +38,32 @@ namespace Foam_Calculator.Controllers
 
 
         [HttpPost]
-        public IActionResult CalculateQuantity(QuantityCalculationModel quantityCalculationModel)
+        public IActionResult CalculateQuantity(CalculationModel calculationModel)
         {
-            decimal tempquantity = (quantityCalculationModel.InputLength * quantityCalculationModel.InputWidth) / 100m * quantityCalculationModel.InputNumber_of_Cushions;
+           
+            _CalculationModel = calculationModel;
+            decimal tempquantity = (calculationModel.InputLength * calculationModel.InputWidth) / 100m * calculationModel.InputNumber_of_Cushions;
             _quantity = tempquantity;
-            
+            _CalculationModel.OutputQuantity = _quantity;
 
-            _quantityCalculationModel = quantityCalculationModel;
+
             FoamUnitPriceService foamUnitPriceService = new FoamUnitPriceService("C:\\Users\\callu\\Documents\\GitHub\\Foam_Calculator\\Foam_Calculator\\FoamPrice.csv");
             CalculateTotalPrice(foamUnitPriceService);
 
-            CalculatorViewModel viewModel = new CalculatorViewModel();
-            {
-                viewModel.Quantity = _quantity;
-                viewModel.TotalPrice = _totalPrice;
-                viewModel.SKU = _sku;
-            }
+            _CalculationModel.OutputTotalPrice = _totalPrice;
+            _CalculationModel.OutputSKU = _sku;
 
-            //should i be returning index here?
-            return View(viewModel);
+            
+            return View("Index", _CalculationModel);
         }
 
         private void CalculateTotalPrice(FoamUnitPriceService foamUnitPriceService)
         {
-            decimal unitPrice = foamUnitPriceService.GetUnitPriceByColourAndThickness(_quantityCalculationModel.InputColour, _quantityCalculationModel.InputThickness);
+            decimal unitPrice = foamUnitPriceService.GetUnitPriceByColourAndThickness(_CalculationModel.InputColour, _CalculationModel.InputThickness);
             decimal totalPrice = _quantity * unitPrice;
             _totalPrice = totalPrice;
 
-            int sku = foamUnitPriceService.GetSkuByColourAndThickness(_quantityCalculationModel.InputColour, _quantityCalculationModel.InputThickness);
+            int sku = foamUnitPriceService.GetSkuByColourAndThickness(_CalculationModel.InputColour, _CalculationModel.InputThickness);
             _sku = sku;
         }
     }
