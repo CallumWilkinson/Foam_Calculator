@@ -2,6 +2,7 @@ using Foam_Calculator.Models;
 using Foam_Calculator.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace Foam_Calculator.Controllers
 {
@@ -16,6 +17,8 @@ namespace Foam_Calculator.Controllers
         public decimal _totalPrice;
 
         public int _sku;
+
+        public string _errorMessage = "";
 
  
   
@@ -40,7 +43,12 @@ namespace Foam_Calculator.Controllers
         [HttpPost]
         public IActionResult CalculateQuantity(CalculationModel calculationModel)
         {
-           
+            if (!ModelState.IsValid)
+            {
+                // Return the same view with validation messages
+                return View("Index", _CalculationModel);
+            }
+
             _CalculationModel = calculationModel;
             decimal tempquantity = (calculationModel.InputLength * calculationModel.InputWidth) / 100m * calculationModel.InputNumber_of_Cushions;
             _quantity = tempquantity;

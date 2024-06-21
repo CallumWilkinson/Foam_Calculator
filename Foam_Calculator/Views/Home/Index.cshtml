@@ -9,18 +9,19 @@
         <div class="mb-3">
             <label asp-for="InputColour" class="form-label">Colour</label>
             <select asp-for="InputColour" class="form-select" id="selectDropdown">
-                <option selected>Select</option>
+                <option value="" selected>Select</option>
                 <option value="White">White</option>
                 <option value="Green">Green</option>
                 <option value="Yellow">Yellow</option>
             </select>
+            <span asp-validation-for="InputColour" class="danger" style="color:red;"></span>
         </div>
 
 
         <div class="mb-3">
             <label asp-for="InputThickness" class="form-label">Thickness</label>
             <select asp-for="InputThickness" class="form-select" id="selectDropdown">
-                <option selected>Select</option>
+                <option value="" selected>Select</option>
                 <option value="18">18mm</option>
                 <option value="25">25mm</option>
                 <option value="40">40mm</option>
@@ -30,21 +31,25 @@
                 <option value="125">125mm</option>
                 <option value="150">150mm</option>
             </select>
+            <span asp-validation-for="InputThickness" class="danger" style="color:red;"></span>
         </div>
 
         <div class="mb-3">
             <label asp-for="InputLength" class="form-label">Length (cm)</label>
             <input asp-for="InputLength" type="text" class="form-control" placeholder="Enter Length">
+            <span asp-validation-for="InputLength" class="danger" style="color:red;"></span>
         </div>
 
         <div class="mb-3">
             <label asp-for="InputWidth" class="form-label">Width (cm)</label>
             <input asp-for="InputWidth" type="text" class="form-control" placeholder="Enter Width">
+            <span asp-validation-for="InputWidth" class="danger" style="color:red;"></span>
         </div>
 
         <div class="mb-3">
             <label asp-for="InputNumber_of_Cushions" class="form-label">Number of Cushions</label>
             <input asp-for="InputNumber_of_Cushions" type="text" class="form-control" placeholder="Enter Amount of Cushions">
+            <span asp-validation-for="InputNumber_of_Cushions" class="danger" style="color:red;"></span>
         </div>
 
         <div class="mb-3">
