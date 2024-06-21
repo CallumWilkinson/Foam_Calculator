@@ -9,9 +9,15 @@ namespace Foam_Calculator.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private int _quantity;
-
         private QuantityCalculationModel _quantityCalculationModel;
+
+        private decimal _quantity;
+
+        public decimal _totalPrice;
+
+        public int _sku;
+
+ 
   
 
         public HomeController(ILogger<HomeController> logger)
@@ -39,22 +45,33 @@ namespace Foam_Calculator.Controllers
         [HttpPost]
         public IActionResult CalculateQuantity(QuantityCalculationModel quantityCalculationModel)
         {
-            ViewBag.quantity = (quantityCalculationModel.InputLength * quantityCalculationModel.InputWidth)/100 * quantityCalculationModel.InputNumber_of_Cushions;
-            _quantity = ViewBag.quantity;
+            decimal tempquantity = (quantityCalculationModel.InputLength * quantityCalculationModel.InputWidth) / 100m * quantityCalculationModel.InputNumber_of_Cushions;
+            _quantity = tempquantity;
+            
+
             _quantityCalculationModel = quantityCalculationModel;
             FoamUnitPriceService foamUnitPriceService = new FoamUnitPriceService("C:\\Users\\callu\\Documents\\GitHub\\Foam_Calculator\\Foam_Calculator\\FoamPrice.csv");
             CalculateTotalPrice(foamUnitPriceService);
-            return View("Index");
+
+            CalculatorViewModel viewModel = new CalculatorViewModel();
+            {
+                viewModel.Quantity = _quantity;
+                viewModel.TotalPrice = _totalPrice;
+                viewModel.SKU = _sku;
+            }
+
+            //should i be returning index here?
+            return View(viewModel);
         }
 
         private void CalculateTotalPrice(FoamUnitPriceService foamUnitPriceService)
         {
-            double unitPrice = foamUnitPriceService.GetUnitPriceByColourAndThickness(_quantityCalculationModel.InputColour, _quantityCalculationModel.InputThickness);
-            double totalPrice = _quantity * unitPrice;
-            ViewBag.totalPrice = totalPrice;
+            decimal unitPrice = foamUnitPriceService.GetUnitPriceByColourAndThickness(_quantityCalculationModel.InputColour, _quantityCalculationModel.InputThickness);
+            decimal totalPrice = _quantity * unitPrice;
+            _totalPrice = totalPrice;
 
             int sku = foamUnitPriceService.GetSkuByColourAndThickness(_quantityCalculationModel.InputColour, _quantityCalculationModel.InputThickness);
-            ViewBag.sku = sku;
+            _sku = sku;
         }
     }
 }

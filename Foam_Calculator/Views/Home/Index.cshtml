@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model Foam_Calculator.Models.QuantityCalculationModel
+@model Foam_Calculator.Models.QuantityCalculationModel, Foam_Calculator.Models.CalculatorViewModel
 
 <div>
     @* When viewing in google chrome, change dimensions to 390 x 844 *@
@@ -53,12 +53,12 @@
 
         <div class="mb-3">
             <label class="form-label fw-bold">Total Foam Price</label>
-            <input type="text" readonly class="form-control-plaintext" value=$@ViewBag.totalPrice>
+            <input type="text" readonly class="form-control-plaintext" value="@ViewBag.totalPrice">
         </div>
 
         <div class="mb-3">
             <label class="form-label fw-bold">Total Quantity</label>
-            <input type="text" readonly class="form-control-plaintext" value=@ViewBag.quantity>
+            <input type="text" readonly class="form-control-plaintext" value="@ViewBag.quantity">
         </div>       
 
         <div class="mb-3">

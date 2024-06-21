@@ -6,11 +6,11 @@
 
         public int InputThickness { get; set; }
 
-        public int InputLength { get; set; }
+        public decimal InputLength { get; set; }
 
-        public int InputWidth { get; set; }
+        public decimal InputWidth { get; set; }
 
-        public int InputNumber_of_Cushions { get; set; }
+        public decimal InputNumber_of_Cushions { get; set; }
       
     }
 }

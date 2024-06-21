@@ -12,7 +12,7 @@ namespace Foam_Calculator.Models
 
         public int SKU { get; set; }
 
-        public double unitPrice { get; set; }
+        public decimal unitPrice { get; set; }
 
 
 
@@ -23,7 +23,7 @@ namespace Foam_Calculator.Models
             Colour = row[1];
             Thickness = int.Parse(row[2]);
             SKU = int.Parse(row[3]);
-            unitPrice = double.Parse(row[4]);
+            unitPrice = decimal.Parse(row[4]);
         }
 
 
