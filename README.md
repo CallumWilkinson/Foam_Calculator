@@ -1,5 +1,5 @@
 # Foam_Calculator
-Access azure hosted site here:
+Access azure hosted site here: (best viewed on mobile)
 
 https://foamcalculator.azurewebsites.net/
 
