@@ -9,6 +9,8 @@
 *.user
 *.userosscache
 *.sln.docstates
+Foam_Calculator\Properties\ServiceDependencies\foamcalculator.profile.arm.json
+
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
