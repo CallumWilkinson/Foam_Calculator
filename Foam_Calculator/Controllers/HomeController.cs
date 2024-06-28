@@ -12,6 +12,8 @@ namespace Foam_Calculator.Controllers
 
         private CalculationModel _CalculationModel;
 
+        private string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "FoamPrice.csv");
+
         private decimal _quantity;
 
         public decimal _totalPrice;
@@ -55,7 +57,7 @@ namespace Foam_Calculator.Controllers
             _CalculationModel.OutputQuantity = _quantity;
 
 
-            FoamUnitPriceService foamUnitPriceService = new FoamUnitPriceService("C:\\Users\\callu\\Documents\\GitHub\\Foam_Calculator\\Foam_Calculator\\FoamPrice.csv");
+            FoamUnitPriceService foamUnitPriceService = new FoamUnitPriceService(filePath);
             CalculateTotalPrice(foamUnitPriceService);
 
             _CalculationModel.OutputTotalPrice = _totalPrice;
