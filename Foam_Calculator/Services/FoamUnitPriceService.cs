@@ -42,16 +42,18 @@ namespace Foam_Calculator.Services
 
         }
 
-        public decimal GetUnitPriceByColourAndThickness(string colour, int thickess)
+        public decimal GetUnitPriceByColourAndThickness(string colour, int thickness)
         {
-            FoamType selectedFoamType = _listOfFoamTypeObjects.Find(f => f.Colour == colour && f.Thickness == thickess);
+            FoamType selectedFoamType = _listOfFoamTypeObjects.Find(f => f.Colour == colour && f.Thickness == thickness);
 
             return selectedFoamType.unitPrice;
         }
 
-        public int GetSkuByColourAndThickness(string colour, int thickess)
+    
+
+    public int GetSkuByColourAndThickness(string colour, int thickness)
         {
-            FoamType selectedFoamType = _listOfFoamTypeObjects.Find(f => f.Colour == colour && f.Thickness == thickess);
+            FoamType selectedFoamType = _listOfFoamTypeObjects.Find(f => f.Colour == colour && f.Thickness == thickness);
 
             return selectedFoamType.SKU;
         }

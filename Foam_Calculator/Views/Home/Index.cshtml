@@ -7,12 +7,21 @@
     @* When viewing in google chrome, change dimensions to 390 x 844 *@
     <form asp-action="CalculateQuantity" asp-controller="Home" method="post">
         <div class="mb-3">
-            <label asp-for="InputColour" class="form-label">Colour</label>
+            <label asp-for="InputColour" class="form-label">Foam Type</label>
             <select asp-for="InputColour" class="form-select" id="selectDropdown">
-                <option value="" selected>Select</option>
+                <option value="" selected>Choose a Foam Type</option>
                 <option value="White">White</option>
                 <option value="Green">Green</option>
                 <option value="Yellow">Yellow</option>
+                <option value="Case">Case</option>
+                <option value="Convolute">Convolute</option>
+                <option value="Blue (PE-30)">Blue (PE-30)</option>
+                <option value="Charcoal (EVA-30)">Charcoal (EVA-30)</option>
+                <option value="Black (EVA-75)">Black (EVA-75)</option>
+                <option value="Black (EVA-240)">Black (EVA-240)</option>
+                <option value="Fast Dry">Fast Dry</option>
+                <option value="Dryflow Firm Dunlop">Dryflow Firm Dunlop</option>
+                <option value="Memory Foam">Memory Foam</option>
             </select>
             <span asp-validation-for="InputColour" class="danger" style="color:red;"></span>
         </div>
@@ -21,12 +30,17 @@
         <div class="mb-3">
             <label asp-for="InputThickness" class="form-label">Thickness</label>
             <select asp-for="InputThickness" class="form-select" id="selectDropdown">
-                <option value="" selected>Select</option>
+                <option value="" selected>Choose a Thickness</option>
+                <option value="3">3mm</option>
+                <option value="6">6mm</option>
+                <option value="12">12mm</option>
                 <option value="18">18mm</option>
+                <option value="20">20mm</option>
                 <option value="25">25mm</option>
                 <option value="40">40mm</option>
                 <option value="50">50mm</option>
                 <option value="75">75mm</option>
+                <option value="80">80mm</option>
                 <option value="100">100mm</option>
                 <option value="125">125mm</option>
                 <option value="150">150mm</option>
