@@ -1,4 +1,4 @@
-# Clark Rubber Quoting Tool (Retail Business )
+# Clark Rubber Quoting Tool (Retail Business)
 Access azure hosted site here: (best viewed on mobile)
 
 https://foamcalculator.azurewebsites.net/
